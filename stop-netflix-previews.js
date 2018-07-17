@@ -10,9 +10,9 @@ domready(function() {
   var timer = setTimer();
 
   function addPlayerEventListener() {
-    var videoPlayer = document.querySelector(".billboard-row .VideoContainer video");
+    var videoPlayer = document.querySelector('.billboard-row .VideoContainer video');
     if(videoPlayer) {
-      videoPlayer.addEventListener("play", pausePreviewPlayer, true);
+      videoPlayer.addEventListener('play', pausePreviewPlayer, true);
       window.clearInterval(timer);
       timer = null;
       // listen for navigation changes
@@ -20,8 +20,14 @@ domready(function() {
   }
 
   function pausePreviewPlayer() {
-      this.pause();
-      console.warn('NetFlix Previews paused.');
+    this.pause();
+    //may as well hide the preview box.
+    var playerContainer = document.querySelector('.billboard-row');
+    var mainView = document.querySelector('.mainView');
+
+    playerContainer.style.display = 'none';
+    mainView.style.marginTop = "50px";
+    console.warn('NetFlix Previews paused.');
   }
 
   chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
