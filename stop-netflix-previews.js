@@ -12,6 +12,7 @@ domready(function() {
   function addPlayerEventListener() {
     var videoPlayer = document.querySelector('.billboard-row .VideoContainer video');
     if(videoPlayer) {
+      videoPlayer.pause();
       videoPlayer.addEventListener('play', pausePreviewPlayer, true);
       window.clearInterval(timer);
       timer = null;
