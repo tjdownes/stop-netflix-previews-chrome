@@ -1,6 +1,13 @@
 domready(function() {
   console.warn('Stop NetFlix Previews extension enabled.');
 
+  //may as well hide the preview box.
+  var playerContainer = document.querySelector('.billboard-row');
+  var mainView = document.querySelector('.mainView');
+
+  playerContainer.style.display = 'none';
+  mainView.style.marginTop = "50px";
+
   function setTimer() {
     return window.setInterval(function() {
       addPlayerEventListener();
@@ -22,13 +29,6 @@ domready(function() {
 
   function pausePreviewPlayer() {
     this.pause();
-    //may as well hide the preview box.
-    var playerContainer = document.querySelector('.billboard-row');
-    var mainView = document.querySelector('.mainView');
-
-    playerContainer.style.display = 'none';
-    mainView.style.marginTop = "50px";
-    console.warn('NetFlix Previews paused.');
   }
 
   chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
