@@ -1,14 +1,9 @@
 domready(function() {
   console.warn('Stop NetFlix Previews extension enabled.');
 
-  //may as well hide the preview box.
-  var playerContainer = document.querySelector('.billboard-row');
-  var mainView = document.querySelector('.mainView');
-
-  playerContainer.style.display = 'none';
-  mainView.style.marginTop = "50px";
-
   function setTimer() {
+    hidePreviewHero();
+
     return window.setInterval(function() {
       addPlayerEventListener();
     }, 500)
@@ -29,6 +24,25 @@ domready(function() {
 
   function pausePreviewPlayer() {
     this.pause();
+  }
+
+  function hidePreviewHero() {
+    //may as well hide the preview box.
+    var playerContainer = document.querySelector('.billboard-row');
+    var mainView = document.querySelector('.mainView');
+
+    try {
+      playerContainer.style.display = 'none';
+    }
+    catch(err) {
+      console.log('player container doesn\'t exist');
+    }
+    try {
+      mainView.style.marginTop = "50px";
+    }
+    catch(err) {
+      console.log('main view container doesn\'t exist');
+    }
   }
 
   chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
