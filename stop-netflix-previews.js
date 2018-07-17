@@ -15,6 +15,7 @@ domready(function() {
       videoPlayer.addEventListener("play", pausePreviewPlayer, true);
       window.clearInterval(timer);
       timer = null;
+      // listen for navigation changes
     }
   }
 
@@ -22,4 +23,10 @@ domready(function() {
       this.pause();
       console.warn('NetFlix Previews paused.');
   }
+
+  chrome.runtime.onMessage.addListener( function(request, sender, sendResponse) {
+    if (request.message === 'tab-changed') {
+      timer = setTimer();
+    }
+  });
 });

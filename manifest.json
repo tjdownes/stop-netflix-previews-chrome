@@ -14,7 +14,15 @@
       "js": ["dom-ready.js", "stop-netflix-previews.js"]
     }
   ],
+  "background": {
+    "scripts": [
+      "background-navigation-handler.js"
+    ],
+    "persistent": false
+  },
   "permissions": [
-    "tabs", "https://www.netflix.com/browse"
+    "tabs",
+    "webNavigation",
+    "https://www.netflix.com/browse"
   ]
 }
