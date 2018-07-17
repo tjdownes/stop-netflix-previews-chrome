@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Stop NetfFlix Previews",
+  "description": "A Chrome extension that prevents NetFlix previews from playing.",
+  "version": "1.0",
+  "author": "TJ Downes",
+  "browser_action": {
+    "default_icon": "images/stop-button.png",
+    "default_title": "Stop Netflix Previews"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.netflix.com/browse"],
+      "js": ["dom-ready.js", "stop-netflix-previews.js"]
+    }
+  ],
+  "permissions": [
+    "tabs", "https://www.netflix.com/browse"
+  ]
+}
