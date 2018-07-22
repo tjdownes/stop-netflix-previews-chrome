@@ -24,6 +24,7 @@ domready(function() {
 
   function pausePreviewPlayer() {
     this.pause();
+    hidePreviewHero();
   }
 
   function hidePreviewHero() {
